@@ -18,7 +18,9 @@ function brochurePDF(): string
     for ($i = 1; $i <= $lesBateauxVoyageurs->cardinal(); $i++) {
         $unBateauVoyageur = $lesBateauxVoyageurs->obtenirObjet($i);
 
-        $unPDF->chargerImage($unBateauVoyageur->getImageBatVoy());
+        $imageLocale = __DIR__ . '/../images/bateauvoyageur/bateau-' . $unBateauVoyageur->getIdBat() . '.jpg';
+        $image = file_exists($imageLocale) ? $imageLocale : $unBateauVoyageur->getImageBatVoy();
+        $unPDF->chargerImage($image);
         $unPDF->ecrireTexte($unBateauVoyageur->versChaine());
     }
 

@@ -32,4 +32,9 @@ abstract class Bateau
         $str .= "Largeur : " . $this->largeurBat . " mètres\n";
         return $str;
     }
+
+    public function getIdBat(): string
+    {
+        return $this->idBat;
+    }
 }
